@@ -23,6 +23,23 @@ namespace AspNetCoreTodo.Services
 
 
         /// <summary>
+        /// ajout a student
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        Task<bool> addAsync(Student student);
+
+        /// <summary>
+        /// update a student
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        Task<bool> updateByIdAsync(Student student);
+
+
+
+
+        /// <summary>
         /// Delete a student
         /// </summary>
         /// <param name="Id"></param>

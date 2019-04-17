@@ -30,6 +30,23 @@ namespace AspNetCoreTodo.Services
             }
         }
 
+        Task<bool> IStudentItemService.addAsync(Student student)
+        {
+            try
+            {
+                if (student != null)
+                {
+                    student.Id = Guid.NewGuid();
+                    Liste.Add(student);
+                }
+                return Task.FromResult(true);
+            }
+            catch (Exception ex)
+            {
+                throw new NotImplementedException(ex.Message);
+            }
+        }
+
         Task<bool> IStudentItemService.delByIdAsync(Guid Id)
         {
             try
@@ -62,6 +79,25 @@ namespace AspNetCoreTodo.Services
             try
             {
                 return Task.FromResult(Liste.Where(s=>s.Id == id).SingleOrDefault());
+            }
+            catch (Exception ex)
+            {
+                throw new NotImplementedException(ex.Message);
+            }
+        }
+
+        Task<bool> IStudentItemService.updateByIdAsync(Student student)
+        {
+            try
+            {
+                if (student != null)
+                {
+                    Student item = Liste.Where(s => s.Id == student.Id).SingleOrDefault();
+                    if (item != null)
+                        item = student;
+                    return Task.FromResult(true);
+                }
+                return Task.FromResult(true);
             }
             catch (Exception ex)
             {

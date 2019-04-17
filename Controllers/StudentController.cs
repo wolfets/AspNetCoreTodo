@@ -60,7 +60,7 @@ namespace AspNetCoreTodo.Controllers
         {
             if (ModelState.IsValid)
             {
-                //_context.Add(student);
+                await _context.addAsync(student);
                 //await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -88,21 +88,22 @@ namespace AspNetCoreTodo.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("StudentId,FirstName,LastName,Gender,DateOfBirth,DateOfRegistration,PhoneNumber,Email,Address1,Address2,City,State,Zip")] Student student)
+        //public async Task<IActionResult> Edit(Guid id, [Bind("StudentId,FirstName,LastName,Gender,DateOfBirth,DateOfRegistration,PhoneNumber,Email,Address1,Address2,City,State,Zip")] Student student)
+        public async Task<IActionResult> Edit(Student student)
         {
-            if (id != student.Id)
-            {
-                return NotFound();
-            }
+            //if (id != student.Id)
+            //{
+            //    return NotFound();
+            //}
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    //_context.Update(student);
+                    await _context.updateByIdAsync(student);
                     //await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateConcurrencyException ex)
                 {
                     //if (!StudentExists(student.Id))
                     //{
