@@ -12,7 +12,8 @@ namespace AspNetCoreTodo.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            //return View();
+            return  RedirectToAction("Index", "Students");
         }
 
         public IActionResult About()
