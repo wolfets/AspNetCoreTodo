@@ -94,7 +94,8 @@ namespace AspNetCoreTodo.Services
                 {
                     Student item = Liste.Where(s => s.Id == student.Id).SingleOrDefault();
                     if (item != null)
-                        item = student;
+                        Liste[Liste.IndexOf(item)] = student;
+
                     return Task.FromResult(true);
                 }
                 return Task.FromResult(true);
